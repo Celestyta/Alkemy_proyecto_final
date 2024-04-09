@@ -32,6 +32,7 @@ def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'listar_productos.html', {'productos': productos})
 
+#Actualizar Productos
 def actualizar_producto(request, pk):
     if request.method == 'POST':
         nombre = request.POST.get('nombre')
