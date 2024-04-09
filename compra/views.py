@@ -31,3 +31,30 @@ def listar_proveedores(request):
 def listar_productos(request):
     productos = Producto.objects.all()
     return render(request, 'listar_productos.html', {'productos': productos})
+
+#Actualizar Producto
+def actualizar_producto(request, id, nombre, precio, stock):
+    producto = Producto.objects.get(id = id)
+    producto.nombre = nombre
+    producto.precio = precio
+    producto.stock = stock
+    producto.save()
+    productos = Producto.objects.all()
+    return render(request, 'listar_productos.html', {'productos': productos})
+
+#Actualizar Proveedor
+def actualizar_proveedor(request, id, nombre, apellido, dni):
+    proveedor = Proveedor.objects.get(id = id)
+    proveedor.nombre = nombre
+    proveedor.apellido = apellido
+    proveedor.dni = dni
+    proveedor.save()
+    proveedores = Proveedor.objects.all()
+    return render(request, 'listar_proveedores.html', {'proveedores': proveedores})
+
+#Borrar producto
+def borrar_producto(request, id):
+    producto = Producto.objects.get(id = id)
+    producto.delete()
+    productos = Producto.objects.all()
+    return render(request, 'listar_productos.html', {'productos': productos})
