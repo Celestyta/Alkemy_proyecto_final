@@ -1,27 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>StockControl - Listar Proveedores</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Listar Proveedores</h1>
-    
+
     <table border="1">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>DNI</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>{{ proveedor.nombre }}</td>
-                <td>{{ proveedor.apellido }}</td>
-                <td>{{ proveedor.dni }}</td>
-            </tr>
-        </tbody>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>DNI</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for proveedor in proveedores %}
+        <tr>
+          <td>{{ proveedor.nombre }}</td>
+          <td>{{ proveedor.apellido }}</td>
+          <td>{{ proveedor.dni }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
     </table>
-</body>
+  </body>
 </html>

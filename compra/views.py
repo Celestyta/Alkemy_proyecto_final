@@ -12,14 +12,15 @@ def agregar_proveedor(request):
             form.save()
     return render(request, 'agregar_proveedor.html', {'form': form})
 
+
 #Crear producto
 def agregar_producto(request):
-    form = ProductoForm()
+    form = ProductoForm(proveedor_choices=Proveedor.objects.all())
     if request.method == 'POST':
-        form = ProductoForm(request.POST)
+        form = ProductoForm(request.POST, proveedor_choices=Proveedor.objects.all())
         if form.is_valid():
             form.save()
-    return render(request, 'agregar_producto.html', {'form': form})
+    return render(request, 'agregar_producto.html', {'form': form, 'proveedores': Proveedor.objects.all()})
 
 #Listar todos los proveedores
 def listar_proveedores(request):
