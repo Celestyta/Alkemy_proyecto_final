@@ -5,7 +5,7 @@
     <title>StockControl - Listar Proveedores</title>
   </head>
   <body>
-    <h1>Listar Proveedores</h1>
+    <h1>Lista de Proveedores</h1>
 
     <table border="1">
       <thead>
@@ -21,6 +21,21 @@
           <td>{{ proveedor.nombre }}</td>
           <td>{{ proveedor.apellido }}</td>
           <td>{{ proveedor.dni }}</td>
+          <td><a href="{% url 'update_proveedor' proveedor.id %}">Actualizar</a></td>
+          <td>
+            <form
+              method="post"
+              action="{% url 'borrar_proveedor' proveedor.id %}"
+            >
+              {% csrf_token %}
+              <input
+                type="hidden"
+                name="proveedor_id"
+                value="{{ proveedor.id }}"
+              />
+              <button type="submit">Borrar</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tbody>

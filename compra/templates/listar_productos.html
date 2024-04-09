@@ -5,7 +5,7 @@
     <title>StockControl - Listar Productos</title>
   </head>
   <body>
-    <h1>Listar Productos</h1>
+    <h1>Lista de Productos</h1>
 
     <table border="1">
       <thead>
@@ -23,6 +23,23 @@
           <td>{{ producto.precio }}</td>
           <td>{{ producto.stock }}</td>
           <td>{{ producto.proveedor }}</td>
+          <td>
+            <a href="{% url 'update_productos' producto.id %}">Actualizar</a>
+          </td>
+          <td>
+            <form
+              method="post"
+              action="{% url 'borrar_producto' producto.id %}"
+            >
+              {% csrf_token %}
+              <input
+                type="hidden"
+                name="product_id"
+                value="{{ producto.id }}"
+              />
+              <button type="submit">Borrar</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tbody>
