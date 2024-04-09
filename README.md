@@ -1,3 +1,3 @@
 Hola!
-Ya quedó todo en orden.
-Gracias por ocuparte!
+Gracias por la oportunidad!
+Espero aprobar.
